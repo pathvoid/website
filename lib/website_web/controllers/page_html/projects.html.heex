@@ -1,0 +1,69 @@
+<div class="min-h-screen" style="background-color: #141414;">
+  <.nav_menu current_path={@conn.request_path} />
+  <div class="max-w-4xl mx-auto px-6 py-12">
+    <h1 class="text-3xl font-light text-white mb-8 text-center">My Projects</h1>
+    <div class="space-y-6">
+      <%= for project <- @projects do %>
+        <div class="rounded-lg p-6 bg-[#1a1a1a] flex flex-col gap-4">
+          <!-- Project header with name and status -->
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+            <h2 class="text-xl font-semibold text-white mb-1"><%= project["name"] %></h2>
+            <% status_class =
+              case project["status"] do
+                "Completed" -> "bg-green-900 text-green-300"
+                "In Progress" -> "bg-yellow-400 text-yellow-900"
+                "Planned" -> "bg-blue-900 text-blue-200"
+                _ -> "bg-gray-800 text-gray-200"
+              end %>
+            <span class={"w-auto self-start md:self-auto px-3 py-1 text-xs font-medium rounded-full #{status_class}"}>
+              <%= project["status"] %>
+            </span>
+          </div>
+          <!-- Project description paragraphs -->
+          <%= if Map.has_key?(project, "paragraphs") do %>
+            <div class="space-y-2">
+              <%= for para <- project["paragraphs"] do %>
+                <p class="text-gray-300 text-sm"><%= para %></p>
+              <% end %>
+            </div>
+          <% end %>
+          <!-- Project components list -->
+          <%= if Map.has_key?(project, "components") do %>
+            <div>
+              <div class="text-gray-400 text-xs font-semibold mb-1">Components:</div>
+              <ul class="list-disc list-inside text-gray-300 text-sm ml-4">
+                <%= for comp <- project["components"] do %>
+                  <li><%= comp %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <!-- Project cost breakdown -->
+          <%= if Map.has_key?(project, "price_breakdown") do %>
+            <div>
+              <div class="text-gray-400 text-xs font-semibold mb-1">Price Breakdown:</div>
+              <ul class="text-gray-300 text-sm ml-4">
+                <%= for item <- project["price_breakdown"] do %>
+                  <li><span class="font-medium"><%= item["item"] %>:</span> $<%= item["price"] %> <%= item["currency"] %></li>
+                <% end %>
+              </ul>
+              <% total = Enum.reduce(project["price_breakdown"], 0, fn i, acc -> acc + i["price"] end) %>
+              <div class="text-gray-200 text-sm font-semibold mt-2 ml-4">Total: $<%= Float.round(total, 2) %> <%= project["price_breakdown"] |> List.first() |> Map.get("currency", "") %></div>
+            </div>
+          <% end %>
+          <!-- Project next steps -->
+          <%= if Map.has_key?(project, "next_steps") do %>
+            <div>
+              <div class="text-gray-400 text-xs font-semibold mb-1">What's Next?</div>
+              <p class="text-gray-300 text-sm"><%= project["next_steps"] %></p>
+            </div>
+          <% end %>
+          <!-- Legacy description field fallback -->
+          <%= if Map.has_key?(project, "description") do %>
+            <p class="text-gray-300 text-sm"><%= project["description"] %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,251 @@
+{
+  "status": {
+    "title": "Privacy Status",
+    "subtitle": "My journey to digital privacy and the alternatives I use",
+    "categories": [
+      {
+        "name": "Operating System",
+        "status": "Privacy Hardened",
+        "statusColor": "purple",
+        "description": "Debloated Windows installation that does not communicate any data to Microsoft, ensuring maximum privacy on the workstation.",
+        "considerationsLink": "/considerations",
+        "considerationsText": "See why Ubuntu is under consideration",
+        "items": []
+      },
+      {
+        "name": "Browser",
+        "status": "Self-hosted",
+        "statusColor": "green",
+        "description": "",
+        "items": [
+          {
+            "name": "Chrome/Edge",
+            "description": "Major browsers from Google and Microsoft track browsing activity and collect user data for advertising and analytics.",
+            "isReplaced": true
+          },
+          {
+            "name": "Brave",
+            "description": "Privacy-focused browser that blocks trackers and ads by default.",
+            "isReplaced": false,
+            "url": "https://brave.com",
+            "displayUrl": "brave.com"
+          }
+        ]
+      },
+      {
+        "name": "Search Engine",
+        "status": "Replaced",
+        "statusColor": "green",
+        "description": "",
+        "items": [
+          {
+            "name": "Google Search",
+            "description": "Google Search tracks search queries, personalizes results based on user profile, and stores search history for advertising purposes.",
+            "isReplaced": true
+          },
+          {
+            "name": "DuckDuckGo",
+            "description": "Privacy-focused search engine that doesn't track users or store personal information.",
+            "isReplaced": false,
+            "url": "https://duckduckgo.com",
+            "displayUrl": "duckduckgo.com"
+          }
+        ]
+      },
+      {
+        "name": "Personal Domain",
+        "status": "Self-hosted",
+        "statusColor": "green",
+        "description": "",
+        "items": [
+          {
+            "name": "No central provider",
+            "description": "Relying on third-party platforms for app access can expose usage patterns and personal data.",
+            "isReplaced": true
+          },
+          {
+            "name": "pathvoid.com",
+            "description": "Self-hosted domain for unified, private access to all apps.",
+            "isReplaced": false,
+            "url": "https://pathvoid.com",
+            "displayUrl": "pathvoid.com"
+          }
+        ]
+      },
+      {
+        "name": "Email",
+        "status": "Migrating",
+        "statusColor": "yellow",
+        "description": "",
+        "items": [
+          {
+            "name": "Gmail",
+            "description": "Google scans email content and metadata for advertising and profiling purposes.",
+            "isReplaced": true
+          },
+          {
+            "name": "Proton Mail",
+            "description": "End-to-end encrypted email for secure communication.",
+            "isReplaced": false,
+            "originalUrl": "proton.me/mail",
+            "customUrl": "https://mail.pathvoid.com",
+            "displayUrl": "mail.pathvoid.com"
+          }
+        ]
+      },
+      {
+        "name": "Calendar",
+        "status": "Replaced",
+        "statusColor": "green",
+        "description": "",
+        "items": [
+          {
+            "name": "Google Calendar",
+            "description": "Google Calendar events and usage data are analyzed for integration with other Google services and advertising.",
+            "isReplaced": true
+          },
+          {
+            "name": "Proton Calendar",
+            "description": "Private calendar for organizing schedules.",
+            "isReplaced": false,
+            "originalUrl": "proton.me/calendar",
+            "customUrl": "https://calendar.pathvoid.com",
+            "displayUrl": "calendar.pathvoid.com"
+          }
+        ]
+      },
+      {
+        "name": "Cloud Storage",
+        "status": "Replaced",
+        "statusColor": "green",
+        "description": "",
+        "items": [
+          {
+            "name": "Google Drive",
+            "description": "Google Drive files and activity are indexed and may be used for data mining and integration with other Google products.",
+            "isReplaced": true
+          },
+          {
+            "name": "Proton Drive",
+            "description": "Encrypted cloud storage for files and documents.",
+            "isReplaced": false,
+            "originalUrl": "proton.me/drive",
+            "customUrl": "https://drive.pathvoid.com",
+            "displayUrl": "drive.pathvoid.com"
+          }
+        ]
+      },
+      {
+        "name": "Documents",
+        "status": "Replaced",
+        "statusColor": "green",
+        "description": "",
+        "items": [
+          {
+            "name": "Google Docs",
+            "description": "Google Docs content is processed and stored on Google servers, subject to data analysis and integration with other services.",
+            "isReplaced": true
+          },
+          {
+            "name": "Proton Docs",
+            "description": "Secure, private alternative to Google Docs.",
+            "isReplaced": false,
+            "originalUrl": "proton.me/docs",
+            "customUrl": "https://docs.pathvoid.com",
+            "displayUrl": "docs.pathvoid.com"
+          }
+        ]
+      },
+      {
+        "name": "Password Manager",
+        "status": "Replaced",
+        "statusColor": "green",
+        "description": "",
+        "items": [
+          {
+            "name": "Google Password Manager",
+            "description": "Google Password Manager stores credentials in the Google ecosystem, which may be accessed or analyzed by Google services.",
+            "isReplaced": true
+          },
+          {
+            "name": "Proton Pass",
+            "description": "Privacy-first password manager for credentials.",
+            "isReplaced": false,
+            "originalUrl": "proton.me/pass",
+            "customUrl": "https://pass.pathvoid.com",
+            "displayUrl": "pass.pathvoid.com"
+          }
+        ]
+      }
+    ]
+  },
+  "considerations": {
+    "title": "Under Consideration",
+    "subtitle": "Technologies and changes being evaluated, with their current challenges.",
+    "items": [
+      {
+        "name": "Moving to Ubuntu",
+        "status": "Under Consideration",
+        "statusColor": "blue",
+        "description": "Considering switching the main operating system to Ubuntu for improved privacy and open-source benefits.",
+        "challenge": "Previous attempts showed that new games are not fully supported, with significant FPS loss. GPU passthrough is under consideration, but would require a second GPU."
+      },
+      {
+        "name": "YouTube Usage",
+        "status": "Under Consideration",
+        "statusColor": "blue",
+        "description": "YouTube remains a major platform for video content, but requires a Google login for subscriptions and recommendations.",
+        "challenge": "Using an email alias could help, but migration from Gmail is still in progress. For better privacy, browser containerization is under consideration, but requires further research and setup."
+      },
+      {
+        "name": "Personal Server Infrastructure",
+        "status": "Under Consideration",
+        "statusColor": "blue",
+        "description": "Evaluating setting up a personal server to self-host most services and applications, reducing dependency on third-party cloud providers.",
+        "challenge": "Requires significant technical knowledge, ongoing maintenance, security considerations, and reliable internet connection. Initial hardware investment and energy costs."
+      },
+      {
+        "name": "Secure File Transfer",
+        "status": "Under Consideration",
+        "statusColor": "blue",
+        "description": "Considering tools like Wormhole, OnionShare, or Magic Wormhole for ephemeral, encrypted file sharing.",
+        "challenge": "Less familiar workflows for recipients."
+      },
+      {
+        "name": "Remote Access & Remote Desktop Privacy",
+        "status": "Under Consideration",
+        "statusColor": "blue",
+        "description": "Exploring Tailscale or self-hosted WireGuard to replace TeamViewer or Google Remote Desktop.",
+        "challenge": "Setup and networking configuration"
+      },
+      {
+        "name": "AI (Self-hosted)",
+        "status": "Under Consideration",
+        "statusColor": "blue",
+        "description": "Considering hosting a personal AI instance for privacy and control, possibly using Olama.",
+        "challenge": "Requires significant hardware resources and setup. Research needed for best open-source models and secure deployment."
+      },
+      {
+        "name": "De-Google Android Mobile",
+        "status": "Under Consideration",
+        "statusColor": "blue",
+        "description": "Evaluating switching to a de-Googled mobile OS like GrapheneOS, CalyxOS, or /e/OS to remove Google services from mobile devices.",
+        "challenge": "Banking apps and push notifications may not work reliably; setup complexity is higher."
+      },
+      {
+        "name": "Social Media Alternatives",
+        "status": "Under Consideration",
+        "statusColor": "blue",
+        "description": "Evaluating privacy-focused social media alternatives like Mastodon (Twitter alternative), Pixelfed (Instagram alternative), and other decentralized platforms.",
+        "challenge": "Smaller user base means less content and engagement; friends and family may not migrate; requires finding the right instances/servers."
+      },
+      {
+        "name": "Self-Hosted Media Streaming",
+        "status": "Under Consideration",
+        "statusColor": "blue",
+        "description": "Evaluating self-hosted media streaming solutions like Jellyfin or Plex to replace commercial streaming services and regain control over media consumption.",
+        "challenge": "Requires significant storage space and bandwidth; initial setup and media organization can be time-consuming; legal considerations for media acquisition."
+      }
+    ]
+  }
+} 

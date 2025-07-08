@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Personal Server Infrastructure",
+    "paragraphs": [
+      "I'm building my own server infrastructure at home to replace my cloud-based setup.",
+      "The goal is to migrate all my self-hosted services from DigitalOcean to my own hardware, giving me more control, privacy, and long-term cost savings. Once everything is running smoothly, I'll shut down my DigitalOcean droplet."
+    ],
+    "components": [
+      "Lenovo ThinkCentre M710q Tiny",
+      "Intel Core i5-7th Gen Processor (up to 3.00 GHz)",
+      "16GB DDR4 RAM",
+      "512GB M.2 NVMe SSD",
+      "DP to HDMI Adapter",
+      "WiFi & Bluetooth",
+      "Ubuntu Server (planned OS)"
+    ],
+    "price_breakdown": [
+      {"item": "Lenovo ThinkCentre M710q Tiny (used)", "price": 179.99, "currency": "CAD"},
+      {"item": "Ethernet Cable 25ft", "price": 12.99, "currency": "CAD"}
+    ],
+    "next_steps": "Install Ubuntu Server, migrate all self-hosted services, and decommission the DigitalOcean droplet once everything is stable.",
+    "status": "In Progress"
+  },
+  {
+    "name": "NoBullFit",
+    "paragraphs": [
+      "I want to get in better shape, but most fitness apps don't cover what I really need. Currently, I'd have to pay for three different subscriptions to get all the features I want.",
+      "My plan is to create my own fitness app and website—nothing too crazy, but focused on real needs and simplicity. The core features will be free for everyone, with advanced features available at a reasonable price."
+    ],
+    "next_steps": "Define the core features, design the first version, and start building the MVP (Minimum Viable Product).",
+    "status": "Planned"
+  }
+] 
