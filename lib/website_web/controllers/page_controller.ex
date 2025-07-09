@@ -1,6 +1,9 @@
 defmodule WebsiteWeb.PageController do
   use WebsiteWeb, :controller
 
+  # Cache TTL in seconds (5 minutes)
+  @cache_ttl 300
+
   def home(conn, _params) do
     # Random privacy statement for dynamic homepage content
     privacy_statements = [
@@ -15,13 +18,13 @@ defmodule WebsiteWeb.PageController do
   end
 
   def status(conn, _params) do
-    # Display privacy status with data from JSON file
+    # Display privacy status with data from GitHub
     data = load_privacy_data()
     render(conn, :status, layout: false, data: data)
   end
 
   def considerations(conn, _params) do
-    # Show privacy considerations with data from JSON file
+    # Show privacy considerations with data from GitHub
     data = load_privacy_data()
     render(conn, :considerations, layout: false, data: data)
   end
@@ -32,35 +35,78 @@ defmodule WebsiteWeb.PageController do
   end
 
   def projects(conn, _params) do
-    # Show projects with data from JSON file
+    # Show projects with data from GitHub
     projects = load_projects()
     render(conn, :projects, layout: false, projects: projects)
   end
 
-  # Load privacy data from JSON file in priv/static/data/
+  # Load privacy data from GitHub repository with caching
   defp load_privacy_data do
-    json_path = Path.join([:code.priv_dir(:website), "static", "data", "privacy_data.json"])
+    cache_key = "privacy_data"
 
-    case File.read(json_path) do
-      {:ok, content} ->
-        case Jason.decode(content) do
-          {:ok, data} -> data
+    case get_cached_data(cache_key) do
+      {:ok, data} -> data
+      {:error, _reason} ->
+        url = "https://raw.githubusercontent.com/pathvoid/website/main/priv/static/data/privacy_data.json"
+
+        case fetch_json_from_github(url) do
+          {:ok, data} ->
+            cache_data(cache_key, data)
+            data
           {:error, _reason} -> %{}
         end
-      {:error, _reason} -> %{}
     end
   end
 
-  # Load projects data from JSON file in priv/static/data/
+  # Load projects data from GitHub repository with caching
   defp load_projects do
-    json_path = Path.join([:code.priv_dir(:website), "static", "data", "projects.json"])
-    case File.read(json_path) do
-      {:ok, content} ->
-        case Jason.decode(content) do
-          {:ok, data} -> data
-          {:error, _} -> []
+    cache_key = "projects_data"
+
+    case get_cached_data(cache_key) do
+      {:ok, data} -> data
+      {:error, _reason} ->
+        url = "https://raw.githubusercontent.com/pathvoid/website/main/priv/static/data/projects.json"
+
+        case fetch_json_from_github(url) do
+          {:ok, data} ->
+            cache_data(cache_key, data)
+            data
+          {:error, _reason} -> []
         end
-      {:error, _} -> []
     end
+  end
+
+  # Fetch JSON data from GitHub using raw content URLs
+  defp fetch_json_from_github(url) do
+    case Finch.build(:get, url) |> Finch.request(Website.Finch) do
+      {:ok, %Finch.Response{status: 200, body: body}} ->
+        case Jason.decode(body) do
+          {:ok, data} -> {:ok, data}
+          {:error, reason} -> {:error, reason}
+        end
+      {:ok, %Finch.Response{status: status}} ->
+        {:error, "HTTP #{status}"}
+      {:error, reason} ->
+        {:error, reason}
+    end
+  end
+
+  # Simple in-memory cache functions
+  defp get_cached_data(key) do
+    case Process.get({:cache, key}) do
+      {data, timestamp} ->
+        if System.system_time(:second) - timestamp < @cache_ttl do
+          {:ok, data}
+        else
+          Process.delete({:cache, key})
+          {:error, :expired}
+        end
+      nil ->
+        {:error, :not_found}
+    end
+  end
+
+  defp cache_data(key, data) do
+    Process.put({:cache, key}, {data, System.system_time(:second)})
   end
 end
