@@ -40,38 +40,72 @@ defmodule WebsiteWeb.PageController do
     render(conn, :projects, layout: false, projects: projects)
   end
 
-  # Load privacy data from GitHub repository with caching
+  # Load privacy data from local files during development, GitHub in production
   defp load_privacy_data do
-    cache_key = "privacy_data"
+    if Mix.env() == :dev do
+      # Load from local file during development
+      load_json_from_local_file("priv/static/data/privacy_data.json")
+    else
+      # Load from GitHub with caching in production
+      cache_key = "privacy_data"
 
-    case get_cached_data(cache_key) do
-      {:ok, data} -> data
-      {:error, _reason} ->
-        url = "https://raw.githubusercontent.com/pathvoid/website/main/priv/static/data/privacy_data.json"
+      case get_cached_data(cache_key) do
+        {:ok, data} -> data
+        {:error, _reason} ->
+          url = "https://raw.githubusercontent.com/pathvoid/website/main/priv/static/data/privacy_data.json"
 
-        case fetch_json_from_github(url) do
-          {:ok, data} ->
-            cache_data(cache_key, data)
-            data
-          {:error, _reason} -> %{}
-        end
+          case fetch_json_from_github(url) do
+            {:ok, data} ->
+              cache_data(cache_key, data)
+              data
+            {:error, _reason} -> %{}
+          end
+      end
     end
   end
 
-  # Load projects data from GitHub repository with caching
+  # Load projects data from local files during development, GitHub in production
   defp load_projects do
-    cache_key = "projects_data"
+    if Mix.env() == :dev do
+      # Load from local file during development
+      load_json_from_local_file("priv/static/data/projects.json")
+    else
+      # Load from GitHub with caching in production
+      cache_key = "projects_data"
 
-    case get_cached_data(cache_key) do
-      {:ok, data} -> data
+      case get_cached_data(cache_key) do
+        {:ok, data} -> data
+        {:error, _reason} ->
+          url = "https://raw.githubusercontent.com/pathvoid/website/main/priv/static/data/projects.json"
+
+          case fetch_json_from_github(url) do
+            {:ok, data} ->
+              cache_data(cache_key, data)
+              data
+            {:error, _reason} -> []
+          end
+      end
+    end
+  end
+
+  # Load JSON from local file
+  defp load_json_from_local_file(file_path) do
+    case File.read(file_path) do
+      {:ok, content} ->
+        case Jason.decode(content) do
+          {:ok, data} -> data
+          {:error, _reason} ->
+            if String.contains?(file_path, "privacy_data") do
+              %{}
+            else
+              []
+            end
+        end
       {:error, _reason} ->
-        url = "https://raw.githubusercontent.com/pathvoid/website/main/priv/static/data/projects.json"
-
-        case fetch_json_from_github(url) do
-          {:ok, data} ->
-            cache_data(cache_key, data)
-            data
-          {:error, _reason} -> []
+        if String.contains?(file_path, "privacy_data") do
+          %{}
+        else
+          []
         end
     end
   end
