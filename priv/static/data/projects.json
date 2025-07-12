@@ -2,8 +2,11 @@
   {
     "name": "Personal Server Infrastructure",
     "paragraphs": [
-      "I'm building my own server infrastructure at home to replace my cloud-based setup.",
-      "The goal is to migrate all my self-hosted services from DigitalOcean to my own hardware, giving me more control, privacy, and long-term cost savings. Once everything is running smoothly, I'll shut down my DigitalOcean droplet."
+      "I've completed the setup of my personal server at home using a Lenovo ThinkCentre M710q running Ubuntu Server. This machine now hosts my own web applications and replaces my former cloud-based setup.",
+      "By managing everything locally, I gain full control over how my data is handled and improve my privacy, all while reducing long-term costs by avoiding cloud hosting fees.",
+      "My personal website now runs on an Elixir Phoenix application served through a Cloudflare Tunnel, allowing secure public access to the server from behind my home network. I've set up systemd to manage the app as a service and integrated it with a custom domain using Cloudflare.",
+      "Static IP mapping is configured via my router to ensure reliable SSH access, and I've switched to a wired Ethernet connection for better stability.",
+      "This setup allows me to deploy multiple websites or apps using subdomains, all served from the same machine. It provides flexibility and performance without relying on containers or external infrastructure."
     ],
     "components": [
       "Lenovo ThinkCentre M710q Tiny",
@@ -18,8 +21,8 @@
       {"item": "Lenovo ThinkCentre M710q Tiny (used)", "price": 179.99, "currency": "CAD"},
       {"item": "Ethernet Cable 25ft", "price": 12.99, "currency": "CAD"}
     ],
-    "next_steps": "Install Ubuntu Server, migrate all self-hosted services, and decommission the DigitalOcean droplet once everything is stable.",
-    "status": "In Progress"
+    "next_steps": "Continue hosting and refining personal apps, automate deployments where useful, and improve documentation so others can follow a similar path toward self-hosting with minimal complexity.",
+    "status": "Active"
   },
   {
     "name": "NoBullFit",
