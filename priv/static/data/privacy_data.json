@@ -176,6 +176,26 @@
             "displayUrl": "pass.pathvoid.com"
           }
         ]
+      },
+      {
+        "name": "Personal Server Infrastructure",
+        "status": "Self-hosted",
+        "statusColor": "green",
+        "description": "Personal server running Ubuntu Server with Elixir Phoenix applications, served through Cloudflare Tunnel for secure public access.",
+        "items": [
+          {
+            "name": "Cloud hosting (DigitalOcean)",
+            "description": "Third-party cloud hosting exposes data to external providers and incurs ongoing costs.",
+            "isReplaced": true
+          },
+          {
+            "name": "Lenovo ThinkCentre M710q",
+            "description": "Self-hosted server infrastructure providing full control over data and applications.",
+            "isReplaced": false,
+            "url": "https://pathvoid.com",
+            "displayUrl": "pathvoid.com"
+          }
+        ]
       }
     ]
   },
@@ -197,13 +217,7 @@
         "description": "YouTube remains a major platform for video content, but requires a Google login for subscriptions and recommendations.",
         "challenge": "Using an email alias could help, but migration from Gmail is still in progress. For better privacy, browser containerization is under consideration, but requires further research and setup."
       },
-      {
-        "name": "Personal Server Infrastructure",
-        "status": "Under Consideration",
-        "statusColor": "blue",
-        "description": "Evaluating setting up a personal server to self-host most services and applications, reducing dependency on third-party cloud providers.",
-        "challenge": "Requires significant technical knowledge, ongoing maintenance, security considerations, and reliable internet connection. Initial hardware investment and energy costs."
-      },
+
       {
         "name": "Secure File Transfer",
         "status": "Under Consideration",
