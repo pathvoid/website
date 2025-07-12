@@ -1,6 +1,6 @@
-<div class="min-h-screen" style="background-color: #141414;">
+<div class="min-h-screen flex flex-col" style="background-color: #141414;">
   <.nav_menu current_path={@conn.request_path} />
-  <div class="max-w-4xl mx-auto px-6 py-12">
+  <div class="flex-1 max-w-4xl mx-auto px-6 py-12">
     <!-- Page header with title and subtitle -->
     <div class="text-center mb-12">
       <h1 class="text-3xl font-light text-white mb-4"><%= @data["considerations"]["title"] %></h1>
@@ -28,4 +28,5 @@
       </a>
     </div>
   </div>
+  <.footer />
 </div>

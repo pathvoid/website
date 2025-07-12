@@ -36,8 +36,8 @@ defmodule WebsiteWeb.PageController do
 
   def projects(conn, _params) do
     # Show projects with data from GitHub
-    projects = load_projects()
-    render(conn, :projects, layout: false, projects: projects)
+    data = load_projects()
+    render(conn, :projects, layout: false, data: data)
   end
 
   # Load privacy data from local files during development, GitHub in production

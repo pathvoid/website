@@ -1,36 +1,17 @@
-[
-  {
-    "name": "Personal Server Infrastructure",
-    "paragraphs": [
-      "I've completed the setup of my personal server at home using a Lenovo ThinkCentre M710q running Ubuntu Server. This machine now hosts my own web applications and replaces my former cloud-based setup.",
-      "By managing everything locally, I gain full control over how my data is handled and improve my privacy, all while reducing long-term costs by avoiding cloud hosting fees.",
-      "My personal website now runs on an Elixir Phoenix application served through a Cloudflare Tunnel, allowing secure public access to the server from behind my home network. I've set up systemd to manage the app as a service and integrated it with a custom domain using Cloudflare.",
-      "Static IP mapping is configured via my router to ensure reliable SSH access, and I've switched to a wired Ethernet connection for better stability.",
-      "This setup allows me to deploy multiple websites or apps using subdomains, all served from the same machine. It provides flexibility and performance without relying on containers or external infrastructure."
-    ],
-    "components": [
-      "Lenovo ThinkCentre M710q Tiny",
-      "Intel Core i5-7th Gen Processor (up to 3.00 GHz)",
-      "16GB DDR4 RAM",
-      "512GB M.2 NVMe SSD",
-      "DP to HDMI Adapter",
-      "WiFi & Bluetooth",
-      "Ubuntu Server (planned OS)"
-    ],
-    "price_breakdown": [
-      {"item": "Lenovo ThinkCentre M710q Tiny (used)", "price": 179.99, "currency": "CAD"},
-      {"item": "Ethernet Cable 25ft", "price": 12.99, "currency": "CAD"}
-    ],
-    "next_steps": "Continue hosting and refining personal apps, automate deployments where useful, and improve documentation so others can follow a similar path toward self-hosting with minimal complexity.",
-    "status": "Active"
-  },
-  {
-    "name": "NoBullFit",
-    "paragraphs": [
-      "I want to get in better shape, but most fitness apps don't cover what I really need. Currently, I'd have to pay for three different subscriptions to get all the features I want.",
-      "My plan is to create my own fitness app and website—nothing too crazy, but focused on real needs and simplicity. The core features will be free for everyone, with advanced features available at a reasonable price."
-    ],
-    "next_steps": "Define the core features, design the first version, and start building the MVP (Minimum Viable Product).",
-    "status": "Planned"
+{
+  "projects": {
+    "title": "My Current Projects",
+    "subtitle": "Active projects and ideas I'm working on",
+    "items": [
+      {
+        "name": "NoBullFit",
+        "paragraphs": [
+          "I want to get in better shape, but most fitness apps don't cover what I really need. Currently, I'd have to pay for three different subscriptions to get all the features I want.",
+          "My plan is to create my own fitness app and website—nothing too crazy, but focused on real needs and simplicity. The core features will be free for everyone, with advanced features available at a reasonable price."
+        ],
+        "next_steps": "Define the core features, design the first version, and start building the MVP (Minimum Viable Product).",
+        "status": "Planned"
+      }
+    ]
   }
-] 
+} 

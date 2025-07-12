@@ -5,6 +5,7 @@ defmodule WebsiteWeb.PageHTML do
 
   use WebsiteWeb, :html
   import WebsiteWeb.NavMenu
+  import WebsiteWeb.Footer
 
   embed_templates "page_html/*"
 
