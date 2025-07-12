@@ -56,3 +56,5 @@ config :phoenix, :json_library, Jason
 
 # Import environment specific config
 import_config "#{config_env()}.exs"
+
+config :website, :env, config_env()

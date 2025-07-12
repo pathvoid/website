@@ -42,7 +42,7 @@ defmodule WebsiteWeb.PageController do
 
   # Load privacy data from local files during development, GitHub in production
   defp load_privacy_data do
-    if Mix.env() == :dev do
+    if Application.get_env(:website, :env) == :dev do
       # Load from local file during development
       load_json_from_local_file("priv/static/data/privacy_data.json")
     else
@@ -66,7 +66,7 @@ defmodule WebsiteWeb.PageController do
 
   # Load projects data from local files during development, GitHub in production
   defp load_projects do
-    if Mix.env() == :dev do
+    if Application.get_env(:website, :env) == :dev do
       # Load from local file during development
       load_json_from_local_file("priv/static/data/projects.json")
     else
